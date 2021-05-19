@@ -11,6 +11,8 @@ The modules that can be used in the code are:
 -  Module 8 (health impact): to evaluate PM2.5 health-related impact, when running module 1
 -  Module 9 (aggregation): to aggregate emissions and concentrations, at NUTS or FUAs level.
 
+Note that this version of the code can be used both with EDGAR5.0 and CAMS4.2.
+
 # Publications
 
 - Degraeuwe, B., Pisoni, E., Thunis, P.
