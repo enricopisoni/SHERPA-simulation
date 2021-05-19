@@ -10,6 +10,9 @@ import numpy as np
 from numpy import zeros, sqrt, array
 import pandas as pd
 import sys
+#EP 20210518
+from sherpa_globals import sector_lst
+
 # create a dictionary with emission reductions per precursor and nuts
 #--------------------------------------------------------------------
 
@@ -34,7 +37,9 @@ def create_emission_reduction_dict(path_reduction_txt):
         # sub dictionary per precursor
         precursor = value_lst[0]
         emission_reduction_dict[precursor] = {}
-        for snap in range(1, 14):
+        #EP20210518
+        for snap in range(1, sector_lst[-1]):
+#        for snap in range(1, 13):
             emission_reduction_dict[precursor][snap] = float(value_lst[snap]) / 100.0
     f.close()
 
@@ -63,7 +68,10 @@ def create_emission_dict(path_emission_cdf, precursor_lst):
         emission_dict[precursor] = rootgrp.variables[precursor][:, :, :]
 
     # get snap, longitude and latitude arrays from emission file
-    snap_array = range(1, 14)
+
+    #snap_array = range(1, 13)
+    #EP20210518
+    snap_array = range(1, sector_lst[-1])
     lon_array = rootgrp.variables['longitude'][:]
     lat_array = rootgrp.variables['latitude'][:]
     emission_dict['Nsnaps'] = snap_array

@@ -19,6 +19,9 @@ import ast
 
 from sherpa_auxiliaries import read_nuts_area 
 from sherpa_auxiliaries import read_nc
+#EP 20210518
+from sherpa_globals import sector_lst
+
 
 def area_calc(rw, lat_area_dct):
     ''' function to look up the area of the cell from the index used in the 
@@ -69,20 +72,35 @@ def module9_aggregation(aggrinp_txt):
     # levels (they are colled the same in fua and nuts)
     nuts_lvs= ['NUTS_Lv0', 'NUTS_Lv1','NUTS_Lv2', 'NUTS_Lv3']
 
-    dct_ms={'GNFR1': 'GNFR01',
-     'GNFR10': 'GNFR10',
-     'GNFR11': 'GNFR11',
-     'GNFR12': 'GNFR12',
-     'GNFR13': 'GNFR13',
-     'GNFR2': 'GNFR02',
-     'GNFR3': 'GNFR03',
-     'GNFR4': 'GNFR04',
-     'GNFR5': 'GNFR05',
-     'GNFR6': 'GNFR06',
-     'GNFR7': 'GNFR07',
-     'GNFR8': 'GNFR08',
-     'GNFR9': 'GNFR09',
-     'ALL': 'GNFRALL'}
+    if sector_lst[-1] ==14 :
+        dct_ms={'GNFR1': 'GNFR01',
+         'GNFR10': 'GNFR10',
+         'GNFR11': 'GNFR11',
+         'GNFR12': 'GNFR12',
+         'GNFR13': 'GNFR13',
+         'GNFR2': 'GNFR02',
+         'GNFR3': 'GNFR03',
+         'GNFR4': 'GNFR04',
+         'GNFR5': 'GNFR05',
+         'GNFR6': 'GNFR06',
+         'GNFR7': 'GNFR07',
+         'GNFR8': 'GNFR08',
+         'GNFR9': 'GNFR09',
+         'ALL': 'GNFRALL'}
+    elif sector_lst[-1] == 13 :
+        dct_ms={'GNFR1': 'GNFR01',
+         'GNFR10': 'GNFR10',
+         'GNFR11': 'GNFR11',
+         'GNFR12': 'GNFR12',
+         'GNFR2': 'GNFR02',
+         'GNFR3': 'GNFR03',
+         'GNFR4': 'GNFR04',
+         'GNFR5': 'GNFR05',
+         'GNFR6': 'GNFR06',
+         'GNFR7': 'GNFR07',
+         'GNFR8': 'GNFR08',
+         'GNFR9': 'GNFR09',
+         'ALL': 'GNFRALL'}
     
     dct_units={'conc': '[\u03bcg/m\u00B3]', '[delta_concentration]':'[\u03bcg/m\u00B3]',
                'v_dll_pp':"[dll/(person year)]",'d_dll_pp':'[dll/(person year)]', 

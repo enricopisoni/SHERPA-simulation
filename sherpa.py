@@ -84,7 +84,7 @@ from sherpa_globals import path_emission_cdf_test, path_area_cdf_test, path_redu
     path_model_cdf_test, path_result_cdf_test, path_nuts0_cdf_test, path_nuts1_cdf_test, path_nuts2_cdf_test, \
     path_base_conc_cdf_test, path_healthbl_test, path_config_json_test, \
     fua_intersect_dir, dbf_dir, target_list, nuts_intersect_dir, path_natural_dir_test, aggr_zones, \
-    path_logo_test, aggrinp_txt
+    path_logo_test, aggrinp_txt, sector_lst
 from sherpa_auxiliaries import is_number
 from sys import argv
 import os.path
@@ -99,7 +99,7 @@ if __name__ == '__main__':
         
         # run module 1 with test inputs
         start = time()
-        module1(path_emission_cdf_test, path_area_cdf_test, path_reduction_txt_test, path_base_conc_cdf_test, path_model_cdf_test, path_result_cdf_test)
+        #module1(path_emission_cdf_test, path_area_cdf_test, path_reduction_txt_test, path_base_conc_cdf_test, path_model_cdf_test, path_result_cdf_test)
         stop = time()
         print('Module 1 run time: %s sec.' % (stop-start))
 
@@ -166,7 +166,7 @@ if __name__ == '__main__':
         
         # run module 9 test inputs        
         start = time()
-        #module9_aggregation('../input_EDGAR_EMEP/config/aggrinp.json')
+        module9_aggregation('../input_EDGAR_EMEP/config/aggrinp.json')
         #module9_aggregation('D:/VAR/sherpaPyInstaller/input_edgar_emep/gui_input/aggrinp.json')
         stop = time()
         print('Module 9 calculation time = %f' % (stop - start))

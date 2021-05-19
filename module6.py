@@ -21,6 +21,8 @@ from math import isnan
 import sys
 from sherpa_globals import alpha_potency
 from sherpa_auxiliaries import create_emission_reduction_dict, create_emission_dict, create_window, deltaNOx_to_deltaNO2
+#EP 20210518
+from sherpa_globals import sector_lst
 
 # function that applies reductions per snap sector and precursor to the emission netcdf
 def create_delta_emission(path_emission_cdf, precursor_lst, reduction_area_array, path_reduction_txt):
@@ -38,7 +40,9 @@ def create_delta_emission(path_emission_cdf, precursor_lst, reduction_area_array
         # calculate the emission reduction
         # reductions are positive!
         # make the sum over all snap sectors
-        for snap in range(1, 14):
+        #EP20210518
+        for snap in range(1, sector_lst[-1]):
+        #for snap in range(1, 13):
             delta_emission_dict[precursor][snap - 1, :, :] = emission_dict[precursor][snap - 1] * reduction_area_array * emission_reduction_dict[precursor][snap]
         
     # sum over all snap sectors
