@@ -2,14 +2,14 @@
 
 ## Content of this repository
 
-Here you find the code to run the SHERPA Source Receptor Relationship, for simulating the impact of emission reduction scenarios in EU regions and cities.
+Here you find the code to run the SHERPA Source Receptor Relationship, for simulating the impact on air quality of emission reduction scenarios, in EU regions and cities.
 
 The code is provided to show how SHERPA Graphical User Interface works behind the scene.
 
-On top of this, there is also a Jupyter notebook ('how_to_run_module1.ipynb') explaining how to use the 'scenario analysis' moduel directly in python (explaining how to set-up a python environment, and then how to run the SHERPA scenario analysis).
+On top of this, there is also a Jupyter notebook ('how_to_run_module1.ipynb') explaining how to use the 'scenario analysis' module directly in python (explaining how to set-up a python environment, and then how to run the SHERPA scenario analysis).
 
 ## What is SHERPA
-SHERPA (Screening for High Emission Reduction Potential on Air) is a Java/Python tool, which allows for a rapid exploration of potential air quality improvements resulting from national/regional/local emission reduction measures. The tool has been developed with the aim of supporting national, regional and local authorities in the design and assessment of their air quality plans.The tool is based on the relationships between emissions and concentration levels, and can be used to answer the following type of questions:
+SHERPA (Screening for High Emission Reduction Potential on Air) is tool, which allows for a rapid exploration of potential air quality improvements resulting from national/regional/local emission reduction measures. The tool has been developed with the aim of supporting national, regional and local authorities in the design and assessment of their air quality plans.The tool is based on the relationships between emissions and concentration levels, and can be used to answer the following type of questions:
 
 - What is the potential for local action in my domain?
 - What are the priority activity, sectors and pollutants on which to take action and,
@@ -25,7 +25,8 @@ More specifically, SHERPA logical pathway is implemented through the following s
 
 ## Current existing modules
 The python code in this repository is used in the SHERPA interface, available at https://aqm.jrc.ec.europa.eu/Section/Sherpa/Background.
-The SHERPA interface uses emissions at 2015 (CAMSv4.2 emissions), EMEP air quality model to derive the source receptor relationships, and meteorology at 2015.
+The SHERPA interface uses emissions at 2015 (CAMSv4.2 emissions), EMEP air quality model to derive the source receptor relationships, and meteorology at 2015. The spatial resolution in the SHERPA interface is 0.1x0.1 degrees.
+
 In particular, the SHERPA interface uses the code of the following modules:
 
 -  Module 1 (scenario assessment): to simulate the impact on air quality of a specific emission reduction scenario
@@ -36,12 +37,14 @@ In particular, the SHERPA interface uses the code of the following modules:
 -  Module 9 (aggregation): to aggregate emissions and concentrations, at NUTS or FUAs level.
 -  Module 10 (cost module): to compute costs of end-of-pipe technologies required to reach a given emission reduction target.
 
-The python code can also be used outside the graphical user interface. For this, we provide a different SHERPA implementation than the one in the SHERPA interface. 
+This python code can also be used outside the graphical user interface. For this, we provide a different SHERPA implementation than the one in the SHERPA interface. 
 In particular, it is a more updated SHERPA implementation, based on emissions from CAMSv4.2 + condensables at 2015, with an improved spatial resoltuion (at 0.1x0.05). 
 The python code as such can be used directly only with these two modules:
 
 -  Module 1 (scenario assessment): to simulate the impact on air quality of a specific emission reduction scenario
 -  Module 3 (Source allocation): to understand how the air quality in a given area is influenced by different sources. 
+
+The data contained in this repository (in the input directory) refers to this implementation, at 0.1x0.05 resolution.
 
 ## STILL UNDER DEVELOPMENT: Preparing results for the downscaling module
 In this branch I adapt the 0.1x0.1 deg resolutionSRR to work with a new downscaling module. This module requires a different structure of emissions and concentration files.
