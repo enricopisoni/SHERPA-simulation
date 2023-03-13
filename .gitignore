@@ -1,0 +1,10 @@
+venv/
+build/
+__pycache__
+input
+output
+dist
+inputBB
+outputBB
+.vscode/
+dict

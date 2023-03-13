@@ -24,15 +24,20 @@ Enrico agrees with this nice explanation of module 1
 
 # imports
 from math import isnan
+from multiprocessing import shared_memory
 import sys
 from time import time
 from netCDF4 import Dataset
 from numpy import lib, zeros, sum, power, sqrt
-from sherpa_auxiliaries import (create_emission_reduction_dict, 
+from numpy.ma import is_masked
+import multiprocessing as mp
+from utils import (create_emission_reduction_dict, 
     create_emission_dict, create_window, read_progress_log, 
     deltaNOx_to_deltaNO2)
 #EP 20210518
-from sherpa_globals import sector_lst
+from globals import sector_lst
+from tqdm import tqdm
+import pickle
 
 # Window class that returns aggregated weighting windows for a given omega
 class OmegaPowerWindows:
@@ -136,9 +141,11 @@ def create_delta_emission(path_emission_cdf, precursor_lst, path_area_cdf,
         delta_emission_dict[precursor] = sum(delta_emission_dict[precursor], axis=0)
               
     return delta_emission_dict
+   
 
 # function definition of source receptor model
 def module1(path_emission_cdf, path_area_cdf, path_reduction_txt, path_base_conc_cdf, path_model_cdf, path_result_cdf, downscale_request, *progresslog):
+    global shared_dictionary
     
     pollName = path_model_cdf.split('SR_')[1].split('.nc')[0]
     
@@ -205,36 +212,29 @@ def module1(path_emission_cdf, path_area_cdf, path_reduction_txt, path_base_conc
     win_pow_omega = OmegaPowerWindows(2 * inner_radius + 1)
     
     # loop over all cells of the domain
-    for ie in range(n_lat):
-        if (time() - last_progress_print) > 1:
-            if progress_dict['start'] >= 0:
-                progress = progress_dict['start'] + float(cell_counter) / float(n_cell) * 100 / progress_dict['divisor']
-                sys.stdout.write('\r')
-                sys.stdout.flush()
-                sys.stdout.write('progress:%f\r' % progress)
-                sys.stdout.flush()
-                last_progress_print = time()
-            
-        for je in range(n_lon):
-            for precursor in precursor_lst:
-                # apply averaging window
-                alpha_ij = alpha_dict[precursor][ie, je]
-                omega_ij = omega_dict[precursor][ie, je]
-                
-                if not(isnan(alpha_ij)):
-                    # if the model is available remove NaN value
-                    if isnan(delta_conc[ie, je]):
-                        delta_conc[ie, je] = 0
-                    # select the window of emissions around the target cell
-                    emissions_centre = pad_delta_emission_dict[precursor][ie:(ie + n_lon_inner_win), je:(je + n_lat_inner_win)]
-                    # apply the weights to the emissions and sum them over the whole window
-                    weighted_emissions_centre = (win_pow_omega.getOmegaPowerWindow(omega_ij) * emissions_centre).sum()
-                    # sum the contribution of the precursor
-                    delta_conc[ie, je] = delta_conc[ie, je] + alpha_ij * weighted_emissions_centre
-            
-            # update the cellcounter for the progress bar
-            cell_counter += 1
-    
+    shared_dictionary = {
+        'alpha_dict': alpha_dict, 
+        'omega_dict': omega_dict, 
+        'pad_delta_emission_dict': pad_delta_emission_dict, 
+        'n_lon_inner_win': n_lon_inner_win, 
+        'n_lat_inner_win': n_lat_inner_win, 
+        'win_pow_omega': win_pow_omega, 
+        'n_lon': n_lon, 
+        'precursor_lst': precursor_lst
+    }
+    f = open('dict', 'wb')
+    bytes_dict = pickle.dumps(shared_dictionary)
+    sm = shared_memory.SharedMemory(create=True, size=len(bytes_dict))
+    sm.buf[0:] = bytes_dict
+    f.close()
+    pool = mp.Pool(initializer=init, initargs=(sm.name,), processes=6)
+    res = list(tqdm(pool.imap(work, range(n_lat)),
+               total=n_lat, desc="progress:", bar_format='{desc}{percentage:3.6f}'))
+
+    for i in range(n_lat):
+        delta_conc[i] = res[i]
+    pool.close()
+    pool.join()
     # In the case of NO2 the variable 'delta_conc' contains the NOx concentrations as NO2-equivalent.
     # NO2 concentration and concentration difference are calculated applying an empiric formula
     # check if the pollutant is NO2, if so NO2 has to be calculated from NOx results w/ function 'deltaNOx_to_deltaNO2'
@@ -288,10 +288,34 @@ def module1(path_emission_cdf, path_area_cdf, path_reduction_txt, path_base_conc
      
     return mod1_res
 
+def init(smm):
+    global shared_dictionary
+    sm = shared_memory.SharedMemory(name=smm)
+    shared_dictionary = pickle.loads(sm.buf)
+    sm.close()
+
+
+def work(ie):
+    d = shared_dictionary
+    res = zeros(d['n_lon'])* float('nan')
+    for je in range(d['n_lon']):
+            for precursor in d['precursor_lst']:
+                alpha_ij = d['alpha_dict'][precursor][ie, je]
+                omega_ij = d['omega_dict'][precursor][ie, je]
+                if not(is_masked(alpha_ij)):
+                    # if the model is available remove NaN value
+                    if isnan(res[je]):
+                        res[je] = 0
+                    # select the window of emissions around the target cell
+                    emissions_centre = d['pad_delta_emission_dict'][precursor][ie:(ie + d['n_lon_inner_win']), je:(je + d['n_lat_inner_win'])]
+                    # apply the weights to the emissions and sum them over the whole window
+                    weighted_emissions_centre = (d['win_pow_omega'].getOmegaPowerWindow(omega_ij) * emissions_centre).sum()
+                    # sum the contribution of the precursor
+                    res[je] = res[je] + alpha_ij * weighted_emissions_centre
+    return res
+    
+
 if __name__ == '__main__':
     
     # testing is know done in a separate script
     pass
-
-
-
