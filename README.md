@@ -29,17 +29,17 @@ More specifically, SHERPA logical pathway is implemented through the following s
 ## Current existing modules and available data
 The python code in this repository is used in the SHERPA interface, available at https://jeodpp.jrc.ec.europa.eu/eu/dashboard/voila/render/SHERPA/Sherpa.ipynb.
 
-SHERPA currently uses as input emissions for the year 2019 (CAMSv6.1 including condensables), EMEP air quality model (version 4.45) to derive the source receptor relationships, and meteorology at 2015. The spatial resolution in the SHERPA interface is 0.1x0.05 degrees.
+SHERPA currently uses as input emissions for the year 2019 (from CAMSv6.1, including condensables), EMEP air quality model (version 4.45) to derive the source receptor relationships, and meteorology at 2015. The spatial resolution in the SHERPA interface is 0.1x0.05 degrees.
 
 In particular, the SHERPA interface uses the code of the following modules:
 
--  Module 1 (scenario assessment): to simulate the impact on air quality of a specific emission reduction scenario
+-  Module 1 (Scenario assessment): to simulate the impact on air quality of a specific emission reduction scenario
 -  Module 3 (Source allocation): to understand how the air quality in a given area is influenced by different sources. This module runs in two modes: precursor-based source allocation, and sector-based one. Note that this module works running module 4 and module 1, in sequence.
 -  Module 4 (Potency): this module computes potencies, and it is not directly launched by the user. On the contrary, it is used by Module 3.
 -  Module 6 (Governance): to analyze how one should coordinate with the surrounding regions to optimally improve air quality;
--  Module 8 (health impact): to evaluate PM2.5 health-related impact, when running module 1
--  Module 9 (aggregation): to aggregate emissions and concentrations, at NUTS or FUAs level.
--  Module 10 (cost module): to compute costs of end-of-pipe technologies required to reach a given emission reduction target.
+-  Module 8 (Health impact): to evaluate PM2.5 health-related impact, when running module 1
+-  Module 9 (Aggregation): to aggregate emissions and concentrations, at NUTS or FUAs level.
+-  Module 10 (Cost module): to compute costs of end-of-pipe technologies required to reach a given emission reduction target.
 
 The current SHERPA versions works with yearly aggregations of emissions and concentrations, and considers 'ground level' (i.e. traffic) and 'high level' (i.e. point sources) emission sources together. 
 On request, SHERPA SRRs working on seasonal time aggregation (for better time granularity), and splitting 'ground level' and 'high level' sources (for better description of the emission impact on concentrations) are available for the users.
