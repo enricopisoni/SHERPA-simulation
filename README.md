@@ -10,6 +10,8 @@ On top of using it in the GUI, this python code can also be used as a 'stand-alo
 
 In this repository there is also a Jupyter notebook ('how_to_run_module1.ipynb') explaining how to use the 'scenario analysis' module directly in python (explaining how to set-up a python environment, and then how to run the SHERPA scenario analysis).
 
+Input data to run SHERPA over Europe are provided in this same repository. More details on the data are avaiable in the next sections, and in the provided Jupyter Notebook.
+
 ## What is SHERPA
 SHERPA (Screening for High Emission Reduction Potential on Air) is tool, which allows for a rapid exploration of potential air quality improvements resulting from national/regional/local emission reduction measures. The tool has been developed with the aim of supporting national, regional and local authorities in the design and assessment of their air quality plans.The tool is based on the relationships between emissions and concentration levels, and can be used to answer the following type of questions:
 
