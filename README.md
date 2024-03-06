@@ -23,11 +23,10 @@ The SHERPA tool is distributed with EU-wide data on emissions and source-recepto
 
 More specifically, SHERPA logical pathway is implemented through the following steps:
 
-- Source allocation: to understand how the air quality in a given area is influenced by different sources;
-- Governance: to analyze how one should coordinate with the surrounding regions to optimally improve air quality;
+- Source allocation: to understand how the air quality in a given area is influenced by different geographical and sectoral sources;
 - Scenario analysis: to simulate the impact on air quality of a specific emission reduction scenario (defined also through the previous two steps)
 
-## Current existing modules
+## Current existing modules and available data
 The python code in this repository is used in the SHERPA interface, available at https://jeodpp.jrc.ec.europa.eu/eu/dashboard/voila/render/SHERPA/Sherpa.ipynb.
 The SHERPA interface uses emissions at 2019 (CAMSv6.1 including condensables), EMEP air quality model (version 4.45) to derive the source receptor relationships, and meteorology at 2015. The spatial resolution in the SHERPA interface is 0.1x0.05 degrees.
 
