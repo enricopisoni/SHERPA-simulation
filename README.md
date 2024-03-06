@@ -4,9 +4,9 @@
 
 Here you find the code to run the SHERPA Source Receptor Relationship, for simulating the impact on air quality of emission reduction scenarios, in EU regions and cities.
 
-The code is provided to show how SHERPA Graphical User Interface (GUI) works behind the scene. SHERPA GUI can be found at https://jeodpp.jrc.ec.europa.eu/eu/dashboard/voila/render/SHERPA/Sherpa.ipynb.
+The code is provided to show how the SHERPA Graphical User Interface (GUI) works behind the scene. SHERPA GUI can be found at https://jeodpp.jrc.ec.europa.eu/eu/dashboard/voila/render/SHERPA/Sherpa.ipynb.
 
-On top of using this python code in the GUI, it can also be used also as a 'stand-alone' code, to simulate the impact of emission reduction scenarios on air quality, and to perform source allocation studies.
+On top of using it in the GUI, this python can also be used also as a 'stand-alone' code, to simulate the impact of emission reduction scenarios on air quality, and to perform source allocation studies.
 
 There is also a Jupyter notebook ('how_to_run_module1.ipynb') explaining how to use the 'scenario analysis' module directly in python (explaining how to set-up a python environment, and then how to run the SHERPA scenario analysis).
 
