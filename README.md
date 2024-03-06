@@ -45,7 +45,9 @@ The current SHERPA versions works with yearly aggregations of emissions and conc
 On request, SHERPA SRRs working on seasonal time aggregation (for better time granularity), and splitting 'ground level' and 'high level' sources (for better description of the emission impact on concentrations) are available for the users.
 
 
-# Publications
+# Relevant publications
+Below a selection of publications. Full list of papers can be found at: https://aqm.jrc.ec.europa.eu/Section/Sherpa/Document.
+
 - Bessagnet B, Pisoni E, Thunis P, Mascherpa A. 
 Design and implementation of a new module to evaluate the cost of air pollutant abatement measures. 
 (2022) Journal of Environmental Management;317:115486. 
