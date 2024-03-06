@@ -46,7 +46,9 @@ On request, SHERPA SRRs working on seasonal time aggregation (for better time gr
 
 
 # Relevant publications
-A full list of papers can be found at: https://aqm.jrc.ec.europa.eu/Section/Sherpa/Document. Below a selection of key papers on SHERPA:
+A full list of papers can be found at: https://aqm.jrc.ec.europa.eu/Section/Sherpa/Document. 
+
+Below a selection of key papers on SHERPA:
 
 - Bessagnet B, Pisoni E, Thunis P, Mascherpa A. 
 Design and implementation of a new module to evaluate the cost of air pollutant abatement measures. 
