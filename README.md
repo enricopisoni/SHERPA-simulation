@@ -29,7 +29,7 @@ More specifically, SHERPA logical pathway is implemented through the following s
 ## Current existing modules and available data
 The python code in this repository is used in the SHERPA interface, available at https://jeodpp.jrc.ec.europa.eu/eu/dashboard/voila/render/SHERPA/Sherpa.ipynb.
 
-SHERPA currently uses emissions for the year 2019 (CAMSv6.1 including condensables), EMEP air quality model (version 4.45) to derive the source receptor relationships, and meteorology at 2015. The spatial resolution in the SHERPA interface is 0.1x0.05 degrees.
+SHERPA currently uses as input emissions for the year 2019 (CAMSv6.1 including condensables), EMEP air quality model (version 4.45) to derive the source receptor relationships, and meteorology at 2015. The spatial resolution in the SHERPA interface is 0.1x0.05 degrees.
 
 In particular, the SHERPA interface uses the code of the following modules:
 
