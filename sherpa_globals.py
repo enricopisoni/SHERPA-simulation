@@ -8,7 +8,7 @@ define some global variables
 
 # variabels for testing
 # absolute emission per cell and macro sector
-path_emission_cdf_test = './input/BC_emiss/BCemis_emepV434_camsV42_01_005_SecEmis.nc'
+path_emission_cdf_test = './input/BC_emiss/BCemis_emepV4_45_cams61_withCond_01005_2019_SecEmis.nc'
 #path_emission_cdf_test = '../input_CAMS42_EMEP_01005/createBCemiGNFR/output/BCemis_emepV434_camsV42_01_005_SecEmis.nc'
 
 # netcdf with cells where reductions have to be applied (value between 0 and 1)
@@ -28,11 +28,11 @@ path_model_cdf_test = './input/SRR/SR_SURF_ug_PM25_rh50.nc'
 # path_model_cdf_test = './input/SRR/SR_SURF_ug_NO.nc' 
 # path_model_cdf_test = './input/SRR/SR_SURF_ppb_O3.nc' 
 
-path_base_conc_cdf_test = './input/BC_concs/BCconc_emepV434_camsv42_01005_SURF_ug_PM25_rh50.nc'
-# path_base_conc_cdf_test = './input/BC_concs/BCconc_emepV434_camsv42_01005_SURF_ug_PM10_rh50.nc'
-# path_base_conc_cdf_test = './input/BC_concs/BCconc_emepV434_camsv42_01005_SURF_ug_NO2.nc'
-# path_base_conc_cdf_test = './input/BC_concs/BCconc_emepV434_camsv42_01005_SURF_ug_NO.nc'
-# path_base_conc_cdf_test = './input/BC_concs/BCconc_emepV434_camsv42_01005_SURF_ppb_O3.nc'
+path_base_conc_cdf_test = './input/BC_concs/BCconc_emepV4_45_cams61_withCond_01005_2019_SURF_ug_PM25_rh50.nc'
+# path_base_conc_cdf_test = './input/BC_concs/BCconc_emepV4_45_cams61_withCond_01005_2019_SURF_ug_PM10_rh50.nc'
+# path_base_conc_cdf_test = './input/BC_concs/BCconc_emepV4_45_cams61_withCond_01005_2019_SURF_ug_NO2.nc'
+# path_base_conc_cdf_test = './input/BC_concs/BCconc_emepV4_45_cams61_withCond_01005_2019_SURF_ug_NO.nc'
+# path_base_conc_cdf_test = './input/BC_concs/BCconc_emepV4_45_cams61_withCond_01005_2019_SURF_ppb_O3.nc'
 
 # reductions per precursor and macro sector
 path_reduction_txt_test = './input/reduction_perc/user_reduction_GNFR_all_PPM25.txt'#user_reduction_GNFR_all.txt'

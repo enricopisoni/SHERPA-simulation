@@ -4,9 +4,9 @@
 
 Here you find the code to run the SHERPA Source Receptor Relationship, for simulating the impact on air quality of emission reduction scenarios, in EU regions and cities.
 
-The code is provided to show how SHERPA Graphical User Interface works behind the scene.
-
-On top of this, there is also a Jupyter notebook ('how_to_run_module1.ipynb') explaining how to use the 'scenario analysis' module directly in python (explaining how to set-up a python environment, and then how to run the SHERPA scenario analysis).
+The code is provided to show how SHERPA Graphical User Interface (GUI) works behind the scene. SHERPA GUI can be found at https://jeodpp.jrc.ec.europa.eu/eu/dashboard/voila/render/SHERPA/Sherpa.ipynb.
+On top of using this python code in the GUI, it can also be used also as a 'stand-alone' code, to simulate the impact of emission reduction scenarios on air quality, and to perform source allocation studies.
+There is also a Jupyter notebook ('how_to_run_module1.ipynb') explaining how to use the 'scenario analysis' module directly in python (explaining how to set-up a python environment, and then how to run the SHERPA scenario analysis).
 
 ## What is SHERPA
 SHERPA (Screening for High Emission Reduction Potential on Air) is tool, which allows for a rapid exploration of potential air quality improvements resulting from national/regional/local emission reduction measures. The tool has been developed with the aim of supporting national, regional and local authorities in the design and assessment of their air quality plans.The tool is based on the relationships between emissions and concentration levels, and can be used to answer the following type of questions:
@@ -24,52 +24,24 @@ More specifically, SHERPA logical pathway is implemented through the following s
 - Scenario analysis: to simulate the impact on air quality of a specific emission reduction scenario (defined also through the previous two steps)
 
 ## Current existing modules
-The python code in this repository is used in the SHERPA interface, available at https://aqm.jrc.ec.europa.eu/Section/Sherpa/Background.
-The SHERPA interface uses emissions at 2015 (CAMSv4.2 emissions), EMEP air quality model to derive the source receptor relationships, and meteorology at 2015. The spatial resolution in the SHERPA interface is 0.1x0.1 degrees.
+The python code in this repository is used in the SHERPA interface, available at https://jeodpp.jrc.ec.europa.eu/eu/dashboard/voila/render/SHERPA/Sherpa.ipynb.
+The SHERPA interface uses emissions at 2019 (CAMSv6.1 including condensables), EMEP air quality model (version 4.45) to derive the source receptor relationships, and meteorology at 2015. The spatial resolution in the SHERPA interface is 0.1x0.05 degrees.
 
 In particular, the SHERPA interface uses the code of the following modules:
 
 -  Module 1 (scenario assessment): to simulate the impact on air quality of a specific emission reduction scenario
 -  Module 3 (Source allocation): to understand how the air quality in a given area is influenced by different sources. This module runs in two modes: precursor-based source allocation, and sector-based one. Note that this module works running module 4 and module 1, in sequence.
--  Module 4: (Potency): this module computes potencies, and it is not directly launched by the user. On the contrary, it is used by Module 3.
+-  Module 4 (Potency): this module computes potencies, and it is not directly launched by the user. On the contrary, it is used by Module 3.
 -  Module 6 (Governance): to analyze how one should coordinate with the surrounding regions to optimally improve air quality;
 -  Module 8 (health impact): to evaluate PM2.5 health-related impact, when running module 1
 -  Module 9 (aggregation): to aggregate emissions and concentrations, at NUTS or FUAs level.
 -  Module 10 (cost module): to compute costs of end-of-pipe technologies required to reach a given emission reduction target.
 
-This python code can also be used outside the graphical user interface. For this, we provide a different SHERPA implementation than the one in the SHERPA interface. 
-In particular, it is a more updated SHERPA implementation, based on emissions from CAMSv4.2 + condensables at 2015, with an improved spatial resoltuion (at 0.1x0.05). 
-The python code as such can be used directly only with these two modules:
+The current SHERPA versions works with yearly aggregations of emissions and concentrations, and considers 'ground level' (i.e. traffic) and 'high level' (i.e. point sources) emission sources together. 
+On request, SHERPA SRRs working on seasonal time aggregation (for better time granularity), and splitting 'ground level' and 'high level' sources (for better description of the emission impact on concentrations) are available for the users.
 
--  Module 1 (scenario assessment): to simulate the impact on air quality of a specific emission reduction scenario
--  Module 3 (Source allocation): to understand how the air quality in a given area is influenced by different sources. 
-
-The data contained in this repository (in the input directory) refers to this implementation, at 0.1x0.05 resolution.
-
-## STILL UNDER DEVELOPMENT: Preparing results for the downscaling module
-In this branch I adapt the 0.1x0.1 deg resolutionSRR to work with a new downscaling module. This module requires a different structure of emissions and concentration files.
-
-For emissions:
-
-- a unique file for all air quality indexes, containing all precursors and (for PM) PPM2.5, PPMco, PPM10
-- same content should be available for basecase (initial) emissions and delta (resulting from the SRR simulation) emissions 
-- the code will work with 12 GNFR sectors
-- note that PPM10 = PPM2.5 + PMco
-
-For concentrations
-
-- you also need basecase files for PPM2.5 and PPM10 concentrations
-- the PPM2.5 basecase is directly extracted from the EMEP results, the PPM10 is on the contrary computed as the sum of PPM2.5 + PPMco
-- not that the SRR for PM downscaling will be run twice: once to simulate total PM2.5 (or PM10) and once to simulate the PPM2.5 (or PPM10) reductions. This second run is performed only reducing PPM2.5 or PPM10 emissions.
-
-Now the code uses different tagas for emissions definitions (PPM25 or PPM10, depending on emissions to be reduced). 
-Also now a new variable has been added when running module1 (downscale_request). 
-If the variable downscale_request=0, a run with normal reductions is done. If downscale_request=1 then a run is done only reducing PPM emissions. 
-This second run creates concentrations change for the PPM component. Finally, now filename are automatically created, depending on the concentrations to be modelled.
-But also depending on the downscale_request. When downscale_request=1 indeed a 'primary' tag is added to the module1 output file.
 
 # Publications
-
 - Bessagnet B, Pisoni E, Thunis P, Mascherpa A. 
 Design and implementation of a new module to evaluate the cost of air pollutant abatement measures. 
 (2022) Journal of Environmental Management;317:115486. 

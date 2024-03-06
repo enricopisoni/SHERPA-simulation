@@ -4,7 +4,7 @@ save_data_on_exit = True
 save_history = True
 save_non_project_files = False
 project_type = 'empty-project-type'
-recent_files = ['sherpa.py', 'README.md', 'sherpa_globals.py', 'module1.py']
+recent_files = ['sherpa.py', 'sherpa_globals.py', 'README.md']
 
 [main]
 version = 0.2.0
