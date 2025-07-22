@@ -2,7 +2,9 @@
 
 ## Content of this repository
 
-Here you find the code to run the SHERPA Source Receptor Relationship, for simulating the impact on air quality of emission reduction scenarios, in EU regions and cities.
+Here you find the code to run the SHERPA Source Receptor Relationship, for simulating the impact on air quality of emission reduction scenarios, in EU regions and cities. 
+
+The code has been updated in July 2025, and now works with 2022 emissions based on CAMSv8.0, 2021 meteorology and version 4.45 of the EMEP model.
 
 The code is provided to show how the SHERPA Graphical User Interface (GUI) works behind the scene. SHERPA GUI can be found at https://jeodpp.jrc.ec.europa.eu/eu/dashboard/voila/render/SHERPA/Sherpa.ipynb.
 
@@ -49,6 +51,36 @@ On request, SHERPA SRRs working on seasonal time aggregation (for better time gr
 A full list of papers can be found at: https://aqm.jrc.ec.europa.eu/Section/Sherpa/Document. 
 
 Below a selection of key papers on SHERPA:
+
+- Pisoni E., Zauli-Sajani S., Belis C.A., Khomenko S., Thunis P., Motta C., Van Dingenen R., Bessagnet B., Monforti-Ferrario F., Maes J., Feyen L.
+High resolution assessment of air quality and health in Europe under different climate mitigation scenarios
+(2025) Nature Communications , 16 (1), art. no. 5134
+https://www.scopus.com/inward/record.uri?eid=2-s2.0-105007185788&doi=10.1038%2fs41467-025-60449-2&partnerID=40&md5=0e12d55e732355e69b53a7e452185bed
+
+- Thunis P., Pisoni E., Zauli-Sajani S., de Meij A.
+Comparison of source apportionment targeting hot-spot concentration and average population exposure
+(2025) Science of the Total Environment, 968, art. no. 178857, Cited 0 times.
+https://www.scopus.com/inward/record.uri?eid=2-s2.0-85218139948&doi=10.1016%2fj.scitotenv.2025.178857&partnerID=40&md5=c6caa747fd9cbf4b8c677b9150b51ac4
+
+- Zauli-Sajani S., Thunis P., Pisoni E., Bessagnet B., Monforti-Ferrario F., De Meij A., Pekar F., Vignati E.
+Reducing biomass burning is key to decrease PM2.5 exposure in European cities
+(2024) Scientific Reports, 14 (1), art. no. 10210, Cited 16 times.
+https://www.scopus.com/inward/record.uri?eid=2-s2.0-85191971193&doi=10.1038%2fs41598-024-60946-2&partnerID=40&md5=499bd09964bd0983d4e83a4c2882b619
+
+- Pisoni E., De Marchi D., di Taranto A., Bessagnet B., Zauli Sajani S., De Meij A., Thunis P.
+SHERPA-Cloud: An open-source online model to simulate air quality management policies in Europe
+(2024) Environmental Modelling and Software, 176, art. no. 106031, Cited 6 times.
+https://www.scopus.com/inward/record.uri?eid=2-s2.0-85189674063&doi=10.1016%2fj.envsoft.2024.106031&partnerID=40&md5=8c359f063d3f77817707d15a4d99eb47
+
+- Verweij R.W., Pisoni E., van Pul A., Thunis P., van der Swaluw E.
+A fast method for ammonia emission reduction scenario studies: Combining EMEP4NL with the SHERPA tool
+(2023) Atmospheric Environment, 306, art. no. 119805, Cited 2 times.
+https://www.scopus.com/inward/record.uri?eid=2-s2.0-85158873253&doi=10.1016%2fj.atmosenv.2023.119805&partnerID=40&md5=ec95b52abf00139e497a4f0b815b2ded
+
+- Khomenko S., Pisoni E., Thunis P., Bessagnet B., Cirach M., Iungman T., Barboza E.P., Khreis H., Mueller N., Tonne C., de Hoogh K., Hoek G., Chowdhury S., Lelieveld J., Nieuwenhuijsen M.
+Spatial and sector-specific contributions of emissions to ambient air pollution and mortality in European cities: a health impact assessment
+(2023) The Lancet Public Health, 8 (7), pp. e546 - e558, Cited 38 times.
+https://www.scopus.com/inward/record.uri?eid=2-s2.0-85163451629&doi=10.1016%2fS2468-2667%2823%2900106-8&partnerID=40&md5=cbb336454ed4268a2251d142b0680ef5
 
 - Bessagnet B, Pisoni E, Thunis P, Mascherpa A. 
 Design and implementation of a new module to evaluate the cost of air pollutant abatement measures. 

@@ -27,7 +27,7 @@ from math import isnan
 import sys
 from time import time
 from netCDF4 import Dataset
-from numpy import lib, zeros, sum, power, sqrt
+from numpy import pad, zeros, sum, power, sqrt
 from sherpa_auxiliaries import (create_emission_reduction_dict, 
     create_emission_dict, create_window, read_progress_log, 
     deltaNOx_to_deltaNO2)
@@ -192,7 +192,7 @@ def module1(path_emission_cdf, path_area_cdf, path_reduction_txt, path_base_conc
 
     pad_delta_emission_dict = {}
     for precursor in precursor_lst:
-        pad_delta_emission_dict[precursor] = lib.pad(delta_emission_dict[precursor], inner_radius, 'constant', constant_values=0)
+        pad_delta_emission_dict[precursor] = pad(delta_emission_dict[precursor], inner_radius, 'constant', constant_values=0)
     
     # apply source receptor relationships
     # -----------------------------------
